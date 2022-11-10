@@ -33,7 +33,7 @@ namespace Plugin.SimpleAudioPlayer
 		///</Summary>
 	  public static ISimpleAudioPlayer CreateSimpleAudioPlayer()
       {
-#if NETSTANDARD1_0
+#if NETSTANDARD
           return null;
 #else
           return new SimpleAudioPlayerImplementation();

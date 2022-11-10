@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.iOS", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.iOS\Plugin.SimpleAudioPlayer.iOS.csproj", "{2882AEEB-D4CD-4EB9-8A6C-6653B33681F0}"
 EndProject
@@ -25,7 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.Ab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.Tizen", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.Tizen\Plugin.SimpleAudioPlayer.Tizen.csproj", "{553D8C7E-18EC-4033-8B41-64114DA99F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SimpleAudioPlayer.WPF", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.WPF\Plugin.SimpleAudioPlayer.WPF.csproj", "{E39230FA-8B4B-4229-A847-EAB0E3B53877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SimpleAudioPlayer.WPFCore", "SimpleAudioPlayer\Plugin.SimpleAudioPlayer.WPFCore\Plugin.SimpleAudioPlayer.WPFCore.csproj", "{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Plugin.SharedSimpleAudioPlayer", "Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.shproj", "{1C626FE9-901E-495A-B28E-7772D4BC397B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.SharedSimpleAudioPlayer45", "Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer45.csproj", "{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -167,27 +171,52 @@ Global
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x64.Build.0 = Release|Any CPU
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{553D8C7E-18EC-4033-8B41-64114DA99F5B}.Release|x86.Build.0 = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|ARM.Build.0 = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x64.Build.0 = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Debug|x86.Build.0 = Debug|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|ARM.ActiveCfg = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|ARM.Build.0 = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x64.ActiveCfg = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x64.Build.0 = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x86.ActiveCfg = Release|Any CPU
-		{E39230FA-8B4B-4229-A847-EAB0E3B53877}.Release|x86.Build.0 = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|ARM.Build.0 = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|x64.Build.0 = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Debug|x86.Build.0 = Debug|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|ARM.ActiveCfg = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|ARM.Build.0 = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|x64.ActiveCfg = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|x64.Build.0 = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFE26131-AC72-4708-A6DB-A8FFF8D8E836}.Release|x86.Build.0 = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|ARM.Build.0 = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|ARM.ActiveCfg = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|ARM.Build.0 = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|x64.Build.0 = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{7752B07F-AFF8-4734-BFCE-F25375A8A1FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76759200-3C33-41DC-A3CA-C4EA4B98D6B0}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{1c626fe9-901e-495a-b28e-7772d4bc397b}*SharedItemsImports = 13
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{2882aeeb-d4cd-4eb9-8a6c-6653b33681f0}*SharedItemsImports = 4
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{53059b96-5c6c-4017-87ea-c89723dac19f}*SharedItemsImports = 4
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{553d8c7e-18ec-4033-8b41-64114da99f5b}*SharedItemsImports = 5
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{56a56f17-7de1-4ca1-9617-bf32e971ac84}*SharedItemsImports = 4
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{bfe26131-ac72-4708-a6db-a8fff8d8e836}*SharedItemsImports = 5
+		Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems*{e34b516d-c0d8-450f-9db0-bb6a5b04aef1}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

@@ -14,14 +14,6 @@
     <DebugType>None</DebugType>
   </PropertyGroup>
 
-	<ItemGroup>
-		<Compile Include="..\Plugin.SimpleAudioPlayer\CrossSimpleAudioPlayer.cs">
-			<Link>CrossSimpleAudioPlayer.cs</Link>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj">
-		</ProjectReference>
-	</ItemGroup>
+	<Import Project="..\..\Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems" Label="Shared" />
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace Plugin.SimpleAudioPlayer
@@ -9,28 +10,41 @@ namespace Plugin.SimpleAudioPlayer
     /// </summary>
     public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
-        public event EventHandler PlaybackEnded;
+        public Func<Task> PlaybackEnded { get; set; }
 
         private static int index;
 
         private MediaPlayer player;
 
+
+        MediaPlayer Player()
+        {
+            try
+            {
+                return player != null && player.CanPause ? player : null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         ///<Summary>
         /// Length of audio in seconds
         ///</Summary>
-        public double Duration => player?.NaturalDuration.TimeSpan.TotalSeconds ?? 0;
+        public double Duration => Player()?.NaturalDuration.TimeSpan.TotalSeconds ?? 0;
 
         ///<Summary>
         /// Current position of audio in seconds
         ///</Summary>
-        public double CurrentPosition => player?.Position.TotalSeconds ?? 0;
+        public double CurrentPosition => Player()?.Position.TotalSeconds ?? 0;
 
         ///<Summary>
         /// Playback volume (0 to 1)
         ///</Summary>
         public double Volume
         {
-            get => player?.Volume ?? 0;
+            get => Player()?.Volume ?? 0;
             set => SetVolume(value, Balance);
         }
 
@@ -39,7 +53,7 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public double Balance
         {
-            get => player?.Balance ?? 0;
+            get => Player()?.Balance ?? 0;
             set => SetVolume(Volume, value);
         }
 
@@ -50,7 +64,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             get
             {
-                if (player == null)
+                if (Player() == null)
                     return false;
                 return _isPlaying;
             }
@@ -65,7 +79,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
-        public bool CanSeek => player != null;
+        public bool CanSeek => Player() != null;
 
         ///<Summary>
         /// Load wave or mp3 audio file from a stream
@@ -79,7 +93,7 @@ namespace Plugin.SimpleAudioPlayer
             if (player != null)
             {
                 var fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), $"{++index}.wav");
-                using (var fileStream = File.OpenWrite(fileName)) audioStream.CopyTo(fileStream);
+                using (var fileStream = File.Create(fileName)) audioStream.CopyTo(fileStream);
 
                 player.Open(new Uri(fileName));
                 player.MediaEnded += OnPlaybackEnded;
@@ -124,7 +138,7 @@ namespace Plugin.SimpleAudioPlayer
                 Play();
             }
 
-            PlaybackEnded?.Invoke(sender, args);
+            PlaybackEnded?.Invoke();
         }
 
         ///<Summary>
@@ -151,7 +165,7 @@ namespace Plugin.SimpleAudioPlayer
         public void Pause()
         {
             _isPlaying = false;
-            player?.Pause();
+            Player()?.Pause();
         }
 
         ///<Summary>
@@ -161,7 +175,7 @@ namespace Plugin.SimpleAudioPlayer
         {
             Pause();
             Seek(0);
-            PlaybackEnded?.Invoke(this, EventArgs.Empty);
+            PlaybackEnded?.Invoke();
         }
 
         ///<Summary>
@@ -169,13 +183,13 @@ namespace Plugin.SimpleAudioPlayer
         ///</Summary>
         public void Seek(double position)
         {
-            if (player == null) return;
+            if (Player() == null) return;
             player.Position = TimeSpan.FromSeconds(position);
         }
 
         private void SetVolume(double volume, double balance)
         {
-            if (player == null || _isDisposed) return;
+            if (Player() == null || _isDisposed) return;
 
             player.Volume = Math.Min(1, Math.Max(0, volume));
             player.Balance = Math.Min(1, Math.Max(-1, balance));
@@ -190,7 +204,7 @@ namespace Plugin.SimpleAudioPlayer
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_isDisposed || player == null)
+            if (_isDisposed || Player() == null)
                 return;
 
             if (disposing)
@@ -213,7 +227,8 @@ namespace Plugin.SimpleAudioPlayer
 
         public void SetSpeed(double speed)
         {
-            player.SpeedRatio = speed;
+            if (Player() != null)
+                player.SpeedRatio = speed;
         }
     }
 }

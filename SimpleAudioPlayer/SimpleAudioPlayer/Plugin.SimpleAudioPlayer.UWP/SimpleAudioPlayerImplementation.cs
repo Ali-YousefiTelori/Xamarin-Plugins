@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 
@@ -10,7 +11,7 @@ namespace Plugin.SimpleAudioPlayer
     /// </summary>
     public class SimpleAudioPlayerImplementation : ISimpleAudioPlayer
     {
-        public event EventHandler PlaybackEnded;
+        public Func<Task> PlaybackEnded { get; set; }
 
         MediaPlayer player;
 
@@ -125,7 +126,7 @@ namespace Plugin.SimpleAudioPlayer
 
         private void OnPlaybackEnded(MediaPlayer sender, object args)
         {
-            PlaybackEnded?.Invoke(sender, EventArgs.Empty);
+            PlaybackEnded?.Invoke();
         }
 
         ///<Summary>
@@ -165,7 +166,7 @@ namespace Plugin.SimpleAudioPlayer
             {
                 Pause();
                 Seek(0);
-                PlaybackEnded?.Invoke(this, EventArgs.Empty);
+                PlaybackEnded?.Invoke();
             }
         }
 

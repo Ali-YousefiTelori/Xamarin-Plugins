@@ -1,6 +1,7 @@
 ﻿using Android.Content.Res;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Uri = Android.Net.Uri;
 
 namespace Plugin.SimpleAudioPlayer
@@ -14,7 +15,7 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Raised when audio playback completes successfully 
         ///</Summary>
-        public event EventHandler PlaybackEnded;
+        public Func<Task> PlaybackEnded { get; set; }
 
         Android.Media.MediaPlayer player;
 
@@ -200,7 +201,7 @@ namespace Plugin.SimpleAudioPlayer
 
             Pause();
             Seek(0);
-            PlaybackEnded?.Invoke(this, EventArgs.Empty);
+            PlaybackEnded?.Invoke();
         }
 
         ///<Summary>
@@ -247,7 +248,7 @@ namespace Plugin.SimpleAudioPlayer
 
         void OnPlaybackEnded(object sender, EventArgs e)
         {
-            PlaybackEnded?.Invoke(sender, e);
+            PlaybackEnded?.Invoke();
 
             //this improves stability on older devices but has minor performance impact
             // We need to check whether the player is null or not as the user might have dipsosed it in an event handler to PlaybackEnded above.

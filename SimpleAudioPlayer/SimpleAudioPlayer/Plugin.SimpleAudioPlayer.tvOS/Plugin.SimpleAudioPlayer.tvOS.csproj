@@ -56,15 +56,7 @@
     <Compile Include="..\Plugin.SimpleAudioPlayer.iOS\SimpleAudioPlayerImplementation.cs">
       <Link>SimpleAudioPlayerImplementation.cs</Link>
     </Compile>
-    <Compile Include="..\Plugin.SimpleAudioPlayer\CrossSimpleAudioPlayer.cs">
-      <Link>CrossSimpleAudioPlayer.cs</Link>
-    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Plugin.SimpleAudioPlayer.Abstractions\Plugin.SimpleAudioPlayer.Abstractions.csproj">
-      <Project>{14e29812-5191-4afb-ba0c-01f289485951}</Project>
-      <Name>Plugin.SimpleAudioPlayer.Abstractions</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Import Project="..\..\Plugin.SharedSimpleAudioPlayer\Plugin.SharedSimpleAudioPlayer.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
 </Project>
