@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Windows.Foundation;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 
@@ -74,7 +75,23 @@ namespace Plugin.SimpleAudioPlayer
         ///<Summary>
         /// Indicates if the position of the loaded audio file can be updated
         ///</Summary>
-        public bool CanSeek => player != null && player.PlaybackSession.CanSeek;
+        public bool CanSeek
+        {
+            get
+            {
+                if (player == null)
+                    return false;
+
+                try
+                {
+                    return player.PlaybackSession.CanSeek;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         ///<Summary>
         /// Load wave or mp3 audio file from a stream
@@ -164,9 +181,17 @@ namespace Plugin.SimpleAudioPlayer
         {
             if (player != null)
             {
-                Pause();
-                Seek(0);
-                PlaybackEnded?.Invoke();
+                try
+                {
+
+                    Pause();
+                    Seek(0);
+                    PlaybackEnded?.Invoke();
+                }
+                catch
+                {
+
+                }
             }
         }
 

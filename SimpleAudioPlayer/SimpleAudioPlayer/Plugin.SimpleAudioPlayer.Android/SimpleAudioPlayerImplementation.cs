@@ -98,7 +98,7 @@ namespace Plugin.SimpleAudioPlayer
             DeleteFile(path);
 
             //cache to the file system
-            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.wav");
+            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), $"cache{index++}.mp3");
             var fileStream = File.Create(path);
             audioStream.CopyTo(fileStream);
             fileStream.Close();
@@ -107,7 +107,7 @@ namespace Plugin.SimpleAudioPlayer
             {
                 player.SetDataSource(path);
             }
-            catch
+            catch(Exception e)
             {
                 try
                 {
